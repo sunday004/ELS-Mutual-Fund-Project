@@ -1,0 +1,171 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern font for readability */
+    background-color: #f8fafc; /* Very light gray-blue for a clean look */
+    color: #1e293b; /* Dark gray-blue for text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Style */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, #2563eb, #1e3a8a); /* Gradient header */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 12px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for the text */
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #d1d5db; /* Muted light-gray for description */
+}
+
+/* Mutual Fund Dropdown */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center dropdown */
+}
+
+.dropdown label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #475569; /* Darker gray-blue */
+    font-weight: 500; /* Semi-bold for better readability */
+}
+
+.dropdown select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1; /* Light gray */
+    border-radius: 12px;
+    background-color: #f8fafc; /* Lighter background */
+    color: #1e293b; /* Darker gray-blue */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown select:focus,
+.dropdown select:hover {
+    border-color: #2563eb; /* Vibrant blue */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); /* More vibrant shadow */
+    transform: translateY(-2px); /* Subtle lift */
+    outline: none;
+}
+
+/* Investment Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center form */
+}
+
+.form input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1; /* Light gray */
+    border-radius: 12px;
+    background-color: #f8fafc; /* Lighter background */
+    color: #1e293b; /* Darker gray-blue */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form input:focus,
+.form input:hover {
+    border-color: #2563eb; /* Vibrant blue */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); /* More vibrant shadow */
+    transform: translateY(-2px); /* Subtle lift */
+    outline: none;
+}
+
+.form button {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #ffffff; /* White text */
+    background: linear-gradient(90deg, #3b82f6, #2563eb); /* Gradient button */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+}
+
+.form button:hover {
+    background: linear-gradient(90deg, #2563eb, #1e40af); /* Darker gradient */
+    transform: translateY(-4px); /* More noticeable lift effect */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.form button:active {
+    background: linear-gradient(90deg, #1e40af, #1e3a8a); /* Deep dark blue gradient */
+    transform: translateY(0); /* Reset lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Original shadow */
+}
+
+/* Results Display */
+.results {
+    padding: 1.5rem;
+    background-color: #ffffff; /* White */
+    border: 1px solid #e2e8f0; /* Light gray */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center results */
+    text-align: center;
+}
+
+.results h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #1e3a8a; /* Deep blue */
+    font-weight: bold;
+}
+
+.results p {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #475569; /* Dark gray-blue */
+    font-weight: 500; /* Semi-bold */
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .form button {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+
+    .results h3 {
+        font-size: 1.5rem;
+    }
+
+    .results p {
+        font-size: 1rem;
+    }
+}
