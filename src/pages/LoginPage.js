@@ -1,39 +1,44 @@
-// pages/LoginPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login logic here
+    // For demonstration purposes, redirect directly after login
     navigate('/calculator');
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <input
-            type="email"
-            placeholder="Email"
-            value={credentials.email}
-            onChange={(e) => setCredentials({...credentials, email: e.target.value})}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            value={credentials.password}
-            onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-page">
+      <div className="login-container">
+        <h1 className="login-title">Login</h1>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Username"
+              value={credentials.username}
+              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+              required
+              className="input-field"
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type="password"
+              placeholder="Password"
+              value={credentials.password}
+              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+              required
+              className="input-field"
+            />
+          </div>
+          <button type="submit" className="btn">Login</button>
+        </form>
+      </div>
     </div>
   );
 };

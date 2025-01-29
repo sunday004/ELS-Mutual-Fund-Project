@@ -1,39 +1,47 @@
 // pages/HistoryPage.js
-import React from 'react';
+import React, { useState } from 'react';
 
 const HistoryPage = () => {
-  const calculations = [
+  const [history] = useState([
     {
-      date: '2024-01-26',
+      id: 1,
+      fundName: 'Mutual Fund 1',
       initialAmount: 10000,
       timeHorizon: 10,
-      returnRate: 15.72,
-      totalBalance: 48162.71
+      earnings: 38162.71,
+      totalBalance: 48162.71,
     },
-    // Add more history items
-  ];
+    {
+      id: 2,
+      fundName: 'Mutual Fund 2',
+      initialAmount: 5000,
+      timeHorizon: 5,
+      earnings: 12150.45,
+      totalBalance: 17150.45,
+    },
+  ]);
 
   return (
-    <div className="history">
-      <h2>Calculation History</h2>
+    <div className="history-page">
+      <h1>Calculation History</h1>
       <table>
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Fund Name</th>
             <th>Initial Amount</th>
-            <th>Time Horizon</th>
-            <th>Return Rate</th>
+            <th>Time Horizon (years)</th>
+            <th>Earnings</th>
             <th>Total Balance</th>
           </tr>
         </thead>
         <tbody>
-          {calculations.map((calc, index) => (
-            <tr key={index}>
-              <td>{calc.date}</td>
-              <td>${calc.initialAmount}</td>
-              <td>{calc.timeHorizon} years</td>
-              <td>{calc.returnRate}%</td>
-              <td>${calc.totalBalance}</td>
+          {history.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.fundName}</td>
+              <td>${entry.initialAmount.toLocaleString()}</td>
+              <td>{entry.timeHorizon}</td>
+              <td>${entry.earnings.toLocaleString()}</td>
+              <td>${entry.totalBalance.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>
