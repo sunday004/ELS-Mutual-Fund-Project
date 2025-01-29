@@ -1,8 +1,8 @@
 import requests
 import pandas as pd
 
-def calculate_average_return(api_key, series_id):
-    base_url = "https://api.stlouisfed.org/fred/series/observations"
+def calculate_average_return():
+    base_url = "https://api.stlouisfed.org/fred/series/observations?series_id=SP500&api_key=d26079fc190512773ac705629a92f8ea&file_type=json"
     
     # Set date range for all years
     start_date = "2015-01-01"
@@ -12,9 +12,6 @@ def calculate_average_return(api_key, series_id):
     end_year = 2024
     
     params = {
-        "api_key": api_key,
-        "series_id": series_id,
-        "file_type": "json",
         "observation_start": start_date,
         "observation_end": end_date
     }
@@ -59,9 +56,51 @@ def calculate_average_return(api_key, series_id):
     except Exception as e:
         return {"error": f"An error occurred: {str(e)}"}
 
-def print_results(results):
-    print(f"Average Return: {results:.4f}")    
-api_key = "d26079fc190512773ac705629a92f8ea"
-series_id = input("Enter a series ID: ")
-answer = calculate_average_return(api_key, series_id)
+def print_results(answer):
+    print(f"Average return: {answer}")
+
+answer = calculate_average_return()
 print_results(answer)
+
+def calculated_beta(ticker):
+    base_url = f"https://api.newtonanalytics.com/stock-beta/?ticker={ticker}&index=^GSPC&interval=1mo&observations=12"
+    
+    try:
+        response = requests.get(base_url)
+
+        if response.status_code != 200:
+            return {"error": f"API request failed: {response.text}"}
+        
+        data = response.json()
+        beta_value = data.get("data")
+
+        if beta_value is None:
+            return {"error": "No beta value available"}
+
+        return {"ticker": ticker, "beta": beta_value}
+        
+    except requests.exceptions.RequestException as e:
+        return {"error": f"API request failed: {str(e)}"}
+    except Exception as e:
+        return {"error": f"An error occurred: {str(e)}"}
+
+def print_beta(results):
+    if "error" in results:
+        print(f"Error: {results['error']}")
+    else:
+        print(f"Beta for {results['ticker']}: {results['beta']:.4f}")
+
+for ticker in ["FXAIX", "VFIAX", "SWPPX", "VFFSX", "VIIIX", "VINIX", "FUSEX"]:
+    beta = calculated_beta(ticker)
+    print_beta(beta)
+
+'''
+FXAIX - Fidelity 500 Index Fund
+VFIAX - Vanguard 500 Index Fund; Admiral
+SWPPX - Schwab S&P 500 Index Fund
+VFFSX - Vanguard 500 Index Fund; Institutional Select
+VIIIX - Vanguard Institutional Index Fund; Inst Plus
+VINIX - Vanguard Institutional Index Fund; Institutional
+FUSEX - Fidelity Spartan 500 Index Fund; Investor
+'''
+
