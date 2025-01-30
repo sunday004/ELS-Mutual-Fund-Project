@@ -8,3 +8,4 @@ export default defineConfig({
     extensions: ['.js', '.jsx'], // Optional, ensures .js and .jsx imports are recognized
   },
 })
+

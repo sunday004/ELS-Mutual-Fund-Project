@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components.css';
+
 
 const MutualFundDropdown = ({ funds, selectedFund, onChange }) => {
     return (

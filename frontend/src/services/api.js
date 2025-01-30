@@ -11,6 +11,7 @@ export const getMutualFunds = async () => {
 };
 
 export const calculateFutureValue = async (data) => {
+    console.log(data);
     const response = await axios.post(`${BASE_URL}/mutual-funds/calculate-fv`, data);
     return response.data;
 };
