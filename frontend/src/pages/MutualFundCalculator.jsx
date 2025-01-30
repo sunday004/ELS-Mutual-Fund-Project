@@ -18,6 +18,7 @@ const Calculator = () => {
   }, []);
 
   const handleAddFund = () => {
+    //code to add an extra fund
     if (selectedFunds.length < 2) {
       setSelectedFunds([
         ...selectedFunds,
